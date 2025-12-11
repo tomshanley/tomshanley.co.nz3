@@ -1,9 +1,9 @@
 export const SITE = {
-  URL: "https://your_site.com",
-  TITLE: "Mono Lume",
+  URL: "https://www.tomshanley.co.nz",
+  TITLE: "Tom Shanley",
   DESCRIPTION:
-    "A full-stack developer with a strong focus on building fast, accessible, and maintainable web applications.",
-  EMAIL: "hi@monolume.com",
+    "A full-stack developer with a strong focus on building fast, accessible, and maintainable web applications."
+
 };
 
 export const HOME = {
@@ -25,16 +25,13 @@ export const PROJECTS = {
 };
 
 export const SOCIALS = [
-  {
-    NAME: "X",
-    HREF: "https://x.com/your_username",
-  },
+  
   {
     NAME: "Linkedin",
-    HREF: "https://linkedin.com/",
+    HREF: "https://www.linkedin.com/in/tshanley",
   },
   {
     NAME: "Github",
-    HREF: "https://github.com/your_username",
+    HREF: "https://github.com/tomshanley",
   },
 ];

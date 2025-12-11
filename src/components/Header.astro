@@ -10,11 +10,9 @@ const links = [
 ];
 ---
 
-<header class="fixed top-0 w-full z-50">
-  <div class="container mx-auto flex items-center justify-between p-6">
-    <a href="/" class="font-bold font-plex text-4xl"
-      >{SITE.TITLE.toUpperCase().charAt(0)}.</a
-    >
+<header class="fixed top-0 w-full z-50" style="background-color: rgba(255, 255, 255, 0.9);">
+  <div class="container mx-auto flex items-center justify-between p-6" >
+    <a href="/" class="font-bold font-plex text-4xl">{SITE.TITLE/*.toUpperCase().charAt(0)*/}</a>
     <nav class="space-x-3 text-secondary hidden md:block">
       {
         links.map((link) => (
