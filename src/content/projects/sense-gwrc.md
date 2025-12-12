@@ -1,10 +1,10 @@
 ---
-title: PromptSmith
+title: Wellington Region Population Forecasts
 description: An AI prompt management tool for developers and creators using OpenAI APIs, with support for versioning, tags, and export to JSON.
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/promptsmith.webp",
+url: "/sense-gwrc-5.png",
 alt:  "Promptsmith thumbnail"
 }
 ---

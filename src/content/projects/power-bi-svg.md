@@ -1,5 +1,5 @@
 ---
-title: "FormSync"
+title: "Power BI SVG charts"
 description: "Serverless forms with instant email notifications, reCAPTCHA, and zero backend. Just drop in a <form>."
 liveUrl: https://example.com
 githubUrl: https://github.com

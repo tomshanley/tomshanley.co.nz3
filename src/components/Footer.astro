@@ -11,10 +11,8 @@ const Projects: CollectionEntry<"projects">[] = (
   <div
     class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-6"
   >
-    <h2 class="text-5xl lg:text-7xl uppercase">{SITE.TITLE}</h2>
-    <p class="text-2xl lg:text-3xl max-w-[760px]">
-      Information Design / Data Visualisation / BI and Analysis
-    </p>
+    <h2 class="text-5xl lg:text-3xl uppercase">{SITE.TITLE}</h2>
+    <h2 class="text-5xl lg:text-3xl uppercase">Information Designer</h2>
   </div>
   <div class="flex flex-col sm:flex-row sm:flex-wrap justify-between gap-10">
     
@@ -40,18 +38,7 @@ const Projects: CollectionEntry<"projects">[] = (
         }
       </ul>
     </div>
-    <div>
-      <h3 class="mb-2 text-xl">Projects</h3>
-      <ul class="space-y-1 text-secondary">
-        {
-          Projects.map((project) => (
-            <li>
-                <a href=`/projects/${project.id}`>{project.data.title}</a>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
+    
   </div>
   <span class="block text-center text-sm opacity-70">
     © {SITE.TITLE}. Built with Astro

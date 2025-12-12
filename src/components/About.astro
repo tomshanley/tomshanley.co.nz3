@@ -1,76 +1,113 @@
+---
+const skills = [
+    "Power BI",
+    "Tableau",
+    "JavaScript",
+    "QlikSense",
+    "D3",
+    "HighCharts",
+    "Grafana",
+    "ChartJS",
+];
+
+const clients = [
+    "Waka Kotahi (NZTA)",
+    "Social Wellbeing Agency",
+    "Superu (Families Commission)",
+    "Ministry of Education",
+    "Department of Internal Affairs",
+    "Ministry of Social Development",
+    "Land Information New Zealand",
+    "Sense Partners",
+    "Greater Wellington Regional Council",
+    "Redvespa Consultants Ltd",
+    "Litmus Datatech",
+    "Crowd Reader",
+    "Southern Canterbury DHB",
+    "Silver Fern Farms",
+    "Mountain Safety Council New Zealand",
+    "Water Safety New Zealand",
+    "Sport New Zealand",
+    "High Performance Sport New Zealand",
+    "New Zealand Motor Caravan Association",
+    "Wellington Water",
+    "United Machinists",
+    "Future for Local Government, Local Government New Zealand",
+    "LMAC",
+    "Jam Solutions",
+    "Dsifer",
+    "Argus Group",
+    "Tower Insurance",
+    "ACC",
+    "Australian Grand Prix Corporation",
+    "Australian Sports Commission",
+    "Ministry for the Environment",
+    "IMIX",
+];
+---
+
 <section id="About" class="container mx-auto mb-28 p-6">
     <h2 class="heading text-5xl md:text-9xl uppercase">About me</h2>
     <div class="grid grid-cols-1 md:grid-cols-2 items-center md:p-0 gap-8">
-        <div class="space-y-6">
-            <div
-                class="w-full aspect-[668/516] md:max-w-[668px] overflow-hidden rounded-3xl"
-            >
-                <img
-                    src="/portrait.webp"
-                    alt="About Me Image"
-                    class="w-full h-full object-cover"
-                />
-            </div>
+        <div
+            class="w-full aspect-[668/516] md:max-w-[668px] overflow-hidden rounded-3xl"
+        >
+            <img
+                src="/spiral.png"
+                alt="About Me Image"
+                class="w-full h-full object-cover"
+            />
         </div>
 
-        <div>
-            <div class="text-lg md:text-2xl text-secondary space-y-4">
-                <p>
-                    I'm a full-stack developer with a strong focus on building
-                    fast, accessible, and maintainable web applications. Over
-                    the past 6 years, I’ve worked on high-traffic production
-                    systems, internal tools for startups, and indie products
-                    used by thousands.
-                </p>
-                <p>
-                    I specialize in JavaScript, TypeScript, and modern
-                    frameworks like Astro, React, and Svelte — but I’m most
-                    passionate about writing clean, resilient code that scales.
-                </p>
-            </div>
-            <div>
-                <h3 class="heading text-2xl uppercase my-8 text-secondary">
-                    My Skills
-                </h3>
-                <div class="flex flex-wrap gap-4 mt-8">
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Power BI
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Tableau
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Javascript
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        QlikSense
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        D3
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Highcharts
-                    </span>
-                    <span
-                        class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary"
-                    >
-                        Grafana
-                    </span>
+        <div class="text-lg md:text-2xl text-secondary space-y-4">
+            <p>
+                I am a data visualisation designer and business analyst, and
+                will bring the best of both worlds to your project.
+            </p>
+            <p>I live and work in Christchurch, New Zealand.</p>
 
+            <p>
+                Originally from the UK, I am a business analyst with a
+                particular passion for presenting data and complex information.
+                I have over 10 years experience working in IT and government,
+                and enjoy the challenge of analysing and presenting the complex
+                environments in which we work.
+            </p>
+
+         
+        </div>
+    </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-1 items-center md:p-0 gap-8">
+            <h3 class="heading text-2xl uppercase my-8 text-secondary">
+                My Skills
+            </h3>
+            <div class="flex flex-wrap gap-4 mt-0">
+                {
+                    skills.map((skill) => (
+                        <span class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary">
+                            {skill}
+                        </span>
+                    ))
+                }
+            </div>
+
+          
+                <h3 class="heading text-2xl uppercase my-8 text-secondary">
+                    Previous Clients
+                </h3>
+                <div class="flex flex-wrap gap-4 mt-0">
+                    {
+                        clients
+                            .sort()
+                            .map((client) => (
+                                <span class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary">
+                                    {client}
+                                </span>
+                            ))
+                    }
                 </div>
             </div>
-        </div>
+        
     </div>
 </section>

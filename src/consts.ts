@@ -21,7 +21,7 @@ export const BLOG = {
 export const PROJECTS = {
   TITLE: "Projects",
   DESCRIPTION:
-    "A collection of my projects with links to repositories and live demos.",
+    "Examples of my work or snippets of useful things I've learn along the way.",
 };
 
 export const SOCIALS = [

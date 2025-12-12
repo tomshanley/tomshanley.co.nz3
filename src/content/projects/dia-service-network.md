@@ -1,17 +1,27 @@
 ---
-title: "ZenTrack"
+title: "DIA government service network"
 description: "A habit and task tracker designed with progressive enhancement in mind. Zero distractions, all momentum."
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/zentrack.webp",
+url: "/dia-4.png",
 alt:  "ZenTrack thumbnail"
 }
 ---
 
 ## Overview
 
-**ZenTrack** is a minimalist task and habit tracker built with a strong focus on simplicity, speed, and usability. Designed with progressive enhancement principles, it works perfectly without JavaScript, then scales up with enhancements — no bloat, no distractions, just momentum.
+In 2017 I was asked to help the Service Innovation team at Department of Internal Affairs to build a visualisation of the government services and how they link to different events in people’s lives.
+
+I used Kumu to build an interactive network diagram, which allowed people to explore the data from different viewpoints, such as person’s life event, a government agency or a particular service.
+
+The final visualisation was also used as part of a presentation to the Minister of Internal Affairs.
+
+Screenshorts of the interactive visualisation:
+![Screenshot 1](/dia-1.png)
+![Screenshot 2](/dia-2.png)
+![Screenshot 3](/dia-3.png)
+
 
 ## Features
 

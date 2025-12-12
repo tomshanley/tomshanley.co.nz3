@@ -1,0 +1,11 @@
+---
+import ServicesT from "@components/Services.astro";
+import Layout from "@layouts/Layout.astro";
+import { SITE } from "@consts";
+---
+
+<Layout title={SITE.TITLE} description={SITE.DESCRIPTION}>
+  <section class="pt-18">
+    <ServicesT />
+  </section>
+</Layout>

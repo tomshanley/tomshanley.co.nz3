@@ -13,6 +13,12 @@ const allProjects: CollectionEntry<"projects">[] =
     <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
       work
     </h2>
+    <p class="text-2xl text-secondary">
+      {PROJECTS.DESCRIPTION}
+    </p>
+    <p class="text-2xl text-secondary">
+      &nbsp
+    </p>
     {allProjects.map((project) => <Card entry={project} />)}
   </section>
 </Layout>
