@@ -4,7 +4,7 @@ description: "Serverless forms with instant email notifications, reCAPTCHA, and 
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/formsync.webp",
+url: "/sankey-thumb.jpg",
 alt:  "FormSync thumbnail"
 }
 ---

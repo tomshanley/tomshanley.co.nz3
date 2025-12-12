@@ -4,7 +4,7 @@ description: "Provide an IRR value for a single date"
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/formsync.webp",
+url: "/sankey-thumb.jpg",
 alt:  "FormSync thumbnail"
 }
 ---
