@@ -11,6 +11,16 @@ alt:  "FormSync thumbnail"
 
 ## Overview
 
+In 2025 I was working with client who needed to report on Internal Rate of Return (IRR) for their investments.
+
+IRR is a simple metric used in financial analysis to estimate the profitability of investments.
+
+While the maths for IRR are quite complicated, fortunately Excel and Power BI provide simple functions for calculating IRR.
+
+In Power BI, the [XIRR function](https://learn.microsoft.com/en-us/dax/xirr-function-dax) will return an IRR value given a table with columns for date and cashflows.
+
+The trick then is calculate the table that used as an input.
+
 1. Identify the Timeframe to Use 
 
 __FirstIRRDate and __LatestIRRDate: 
@@ -57,36 +67,11 @@ Create a table that shows cash flows for each investment, only within the report
 For the last period, it includes both MOIC (Multiple on Invested Capital) and projected cash flows to reflect expected future value. 
  
 
-5. Return Either the Projected IRR or the Latest Known IRR 
+5. Return Either the Projected IRR or the Latest Known IRR
 
-Depending on the situation: 
+Depending on the situation:
 
-If the report includes future periods and there are valid transactions: 
+If the report includes future periods and there are valid transactions:
 
-Calculate a projected IRR using quarterly cash flows (XIRR). 
-
-If not: 
-
-Just return the last known IRR from historical data. 
-
-**FormSync** is a drop-in solution for handling forms without setting up a backend. Just add a form to your site, and it handles the rest — validation, spam filtering, and sending submissions directly to your inbox.
-
-## Features
-
-- 📨 
-
-## Tech Stack
-
-- **Frontend**: HTML5, minimal client JS
-- **Backend**: Serverless functions (e.g. Vercel, Netlify)
-- **Third-party**: reCAPTCHA, Email APIs (e.g. Resend)
-
-## Why I Built This
-
-## Links
-
-- 🔗 [Live Demo](https://formsync.dev)
-- 💾 [Source Code](https://github.com/yourusername/formsync)
-
----
-
+Calculate a projected IRR using quarterly cash flows (XIRR).
+If not: Just return the last known IRR from historical data.
