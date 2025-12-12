@@ -1,6 +1,6 @@
 ---
 title: Wellington Region Population Forecasts
-description: An AI prompt management tool for developers and creators using OpenAI APIs, with support for versioning, tags, and export to JSON.
+description: Purpose built website for providing population forecasts for the Greater Wellington Region.
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
@@ -11,32 +11,25 @@ alt:  "Promptsmith thumbnail"
 
 ## Overview
 
-**PromptSmith** is a prompt management interface built for developers, researchers, and creators working with OpenAI’s API. It offers a streamlined workflow to organize, tag, and version prompts — making experimentation and reuse effortless.
+In 2021 I worked with [Sense Partners](http://www.sense.partners/) who develop population forecasts for the [Greater Wellington Regional Council](https://www.gw.govt.nz/).
 
-## Features
+I built the [website](http://demographics.sensepartners.nz/) to visualise their forecasts for interested public, community groups, senior council officers and councillors - to access, understand and use key forecast outputs and data.
 
-- 🧠 Version-controlled prompts
-- 🏷️ Tag system for categorization
-- 📤 Export prompts to JSON for easy integration
-- 🔍 Search and filter UI
-- 🌗 Dark mode support
-- ⚡ Built with Astro + TypeScript
+The visualisations were primarily built using [ChartJS](https://www.chartjs.org/), [Mapbox](https://www.mapbox.com/), [D3](https://d3js.org/) and [Bootstrap Tables](https://bootstrap-table.com/).
 
-## Tech Stack
+Examples of the charts and maps:
 
-- **Frontend**: Astro, TailwindCSS, TypeScript
-- **Backend**: Serverless (Optional), File-based storage or Supabase
-- **Deployment**: Vercel
+*Line chart showing the population forecasts for the whole region from 2018 to 2048*
 
-## Why I Built This
+![Line chart showing the population forecasts for the whole region from 2018 to 2048](/sense-gwrc-1.png)
 
-Managing prompts manually in notepad files or scattered in code wasn't scalable — especially when iterating rapidly. PromptSmith brings order to chaos, with a minimal interface that respects developer ergonomics.
+*Dot plot showing the forecasted change in population by age band from 2018 to 2048*
+![Dot plot showing the forecasted change in population by age band from 2018 to 2048](/sense-gwrc-2.png)
 
-## Links
+*Line charts showing the population forecasts for the Carterton District*
+![Line charts showing the population forecasts for the Carterton District](/sense-gwrc-3.png)
 
-- 🔗 [Live Demo](https://promptsmith.dev)
-- 💾 [Source Code](https://github.com/yourusername/promptsmith)
+*Choropleth map to explore the forecasts by suburb or SA2 areas, across different measures*
+![Choropleth map to explore the forecasts by suburb or SA2 areas, across different measures](/sense-gwrc-4.png)
 
----
-
-_Built with clarity and intention._
+This project was undertaken while I was employed at [Redvepsa Consultants Ltd](https://www.redvespa.com/).

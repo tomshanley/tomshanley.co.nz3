@@ -1,6 +1,6 @@
 ---
 title: "Superu"
-description: "An AI prompt management tool for developers and creators using OpenAI APIs, with support for versioning, tags, and export to JSON."
+description: "Print ready visualisations for Superu's Families and Whānau Status Report."
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
@@ -11,82 +11,35 @@ alt:  "FormSync thumbnail"
 
 ## Overview
 
-1. Identify the Timeframe to Use 
+In 2017 I assisted Superu (The Familiies Commission) with their analysis and visualisation of data for the *Families and Whānau Status Report*.
 
-__FirstIRRDate and __LatestIRRDate: 
+I developed charts that helped the analysts understand their data better, and then produced final charts for inclusion in the [final published report](https://thehub.sia.govt.nz/assets/documents/F&W%202017%20report%20WEB.pdf).
 
-Find the first and last date where IRR-related entries exist in the data (i.e. IRR journal entries). 
+Some of the charts included in the report:
 
-__StartPeriod and __EndPeriod: 
 
-Set the date range of the current report view — from the earliest to the latest date shown in the visual/report. 
+*Bubble heat map showing the Prevalence of domain disadvantage for families experiencing multiple disadvantages*
 
-__LocalToday: 
+![Bubble heat map showing the Prevalence of domain disadvantage for families experiencing multiple disadvantages](/superu-1.jpg)
 
-Get today’s date for comparison. 
- 
+*Diverging bar chart showing the number of people who can provide help and support*
 
-2. Pull Investment Data 
+![Diverging bar chart showing the number of people who can provide help and support](/superu-2.jpg)
 
-__SelectedInvestments: 
+*Clustered bar chart showing who has a partner or other family member for support*
 
-Get the list of investments being analyzed right now (based on filters or grouping on the visual). 
+![Clustered bar chart showing who has a partner or other family member for support](/superu-3.jpg)
 
-__CurrTransaction: 
+*Tree showing Indicators and life domains used in Superu’s multiple disadvantage measure*
 
-Pull the current cash flow or value for IRR calculations (could be actuals or projections). 
- 
+![Tree showing Indicators and life domains used in Superu’s multiple disadvantage measure](/superu-4.jpg)
 
-3. Check If a Final IRR Can Be Used 
+In addition to the Families and Whānau Status Report, I also contributed designs for charts for the [Youth Mental Health Project](https://thehub.sia.govt.nz/assets/Uploads/Youth-Mental-Health-Project-At-a-Glance.pdf) and [Land Use Regulations reports](https://thehub.sia.govt.nz/resources/quantifying-the-impact-of-land-use-regulation-evidence-from-new-zealand-2/).
 
-__LatestIRR: 
+*Example chart from the Youth Mental Health Project*
 
-If the most recent IRR transaction date is before or equal to the current reporting period, and today’s date is within the reporting range, then: 
+![Example chart from the Youth Mental Health Project](/superu-5.jpg)
 
-Return the final IRR as of the last actual transaction. 
+*Example chart from the Land Use Regulations reports*
 
-This avoids projection if you already have final numbers. 
- 
-
-4. Build a Table of Cash Flows by Quarter 
-
-__IRRTable: 
-
-Create a table that shows cash flows for each investment, only within the reporting period. 
-
-For the last period, it includes both MOIC (Multiple on Invested Capital) and projected cash flows to reflect expected future value. 
- 
-
-5. Return Either the Projected IRR or the Latest Known IRR 
-
-Depending on the situation: 
-
-If the report includes future periods and there are valid transactions: 
-
-Calculate a projected IRR using quarterly cash flows (XIRR). 
-
-If not: 
-
-Just return the last known IRR from historical data. 
-
-**FormSync** is a drop-in solution for handling forms without setting up a backend. Just add a form to your site, and it handles the rest — validation, spam filtering, and sending submissions directly to your inbox.
-
-## Features
-
-- 📨 
-
-## Tech Stack
-
-- **Frontend**: HTML5, minimal client JS
-- **Backend**: Serverless functions (e.g. Vercel, Netlify)
-- **Third-party**: reCAPTCHA, Email APIs (e.g. Resend)
-
-## Why I Built This
-
-## Links
-
-- 🔗 [Live Demo](https://formsync.dev)
-- 💾 [Source Code](https://github.com/yourusername/formsync)
-
----
-
+![Example chart from the Land Use Regulations reports](/superu-6.jpg)
