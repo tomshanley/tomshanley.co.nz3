@@ -4,7 +4,7 @@ description: "Provide an IRR value for a single date"
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/sankey-thumb.jpg",
+url: "/irr.png",
 alt:  "FormSync thumbnail"
 }
 ---
@@ -13,65 +13,200 @@ alt:  "FormSync thumbnail"
 
 In 2025 I was working with client who needed to report on Internal Rate of Return (IRR) for their investments.
 
-IRR is a simple metric used in financial analysis to estimate the profitability of investments.
+IRR is a metric used in financial analysis to estimate the profitability of investments.
 
-While the maths for IRR are quite complicated, fortunately Excel and Power BI provide simple functions for calculating IRR.
+While the maths for IRR are quite complicated, Excel and Power BI provide simple functions for calculating IRR. In Power BI, the [XIRR function](https://learn.microsoft.com/en-us/dax/xirr-function-dax) will return an IRR value given a table with columns for date and cashflows. So the trick is to calculate that table per data point you need to present in a chart or for a single KPI figure.
 
-In Power BI, the [XIRR function](https://learn.microsoft.com/en-us/dax/xirr-function-dax) will return an IRR value given a table with columns for date and cashflows.
+The XIRR needs the cashflows to be populated per date. And for each data point you present you need all historic dates, the memory usage can start to blow out for large number of investments and dates.
 
-The trick then is calculate the table that used as an input.
+The overall DAX calculation we ended up using was this, which we used for reporting at a financial quarter and for "projected" IRR. 
 
-1. Identify the Timeframe to Use 
+- For reporting at quarter end, if there cashflows on or after that date, we calculate IRR as at the last day of the quarter. Otherwise, if the last cashflow is before the end of the quarter, we report IRR as at the date of the last cashflow.
+- IRR is sensitive to the dates used, so it helps to provide IRR on the cashflow dates if possible, and if it is clear to the dashboard user.
+- Projected IRR means that we use the investments current value (as at the date being reported on) as a potential cashflow if investment was sold on that day.
 
-__FirstIRRDate and __LatestIRRDate: 
+First I identify the first and last date where journal entries occur that relate to IRR (in the source data, journal records are flagged using **is_irr** if they are used for IRR calculations):
 
-Find the first and last date where IRR-related entries exist in the data (i.e. IRR journal entries). 
+```dax
+IRR (Selected Qtr) = 
+VAR __FirstIRRDate = CALCULATE(
+    MIN(fact_journal[JournalDateNZT]), 
+    REMOVEFILTERS(dim_date), 
+    fact_journal[is_irr] = TRUE()
+    )
 
-__StartPeriod and __EndPeriod: 
+VAR __LatestIRRDate = CALCULATE(
+    MAX(fact_journal[JournalDateNZT]), 
+    REMOVEFILTERS(dim_date), 
+    fact_journal[is_irr] = TRUE()
+    )
+```
 
-Set the date range of the current report view — from the earliest to the latest date shown in the visual/report. 
+For data point's period (ie quarter), we get the start and end dates that the quarter covers:
 
-__LocalToday: 
+```dax
+VAR __StartPeriod = MIN(dim_date[date_id])
+VAR __EndPeriod = MAX(dim_date[date_id])
+```
 
-Get today’s date for comparison. 
- 
+For data point's period (ie quarter), we check if there's an IRR cashflow or the current running total for the investments value.
 
-2. Pull Investment Data 
+```dax
+VAR __CurrTransaction = IF(
+    [IRR Cashflow Is Blank], 
+    [Value RT], 
+    [IRR Cashflow]
+    )
+```
 
-__SelectedInvestments: 
+Get the list of investments being analyzed right now (based on filters or grouping on the visual):
 
-Get the list of investments being analyzed right now (based on filters or grouping on the visual). 
+```dax  
+VAR __SelectedInvestments = VALUES(dim_investment[investmentid])
+```
 
-__CurrTransaction: 
+We get today's date for use later:
 
-Pull the current cash flow or value for IRR calculations (could be actuals or projections). 
- 
+```dax
+VAR __LocalToday = TODAY()
+```
 
-3. Check If a Final IRR Can Be Used 
-
-__LatestIRR: 
+If the last IRR transaction is before the end of the current period, then we use a different, simpler, IRR calculation that uses per day records from the journals.
 
 If the most recent IRR transaction date is before or equal to the current reporting period, and today’s date is within the reporting range, then: 
 
 Return the final IRR as of the last actual transaction. 
 
 This avoids projection if you already have final numbers. 
- 
 
-4. Build a Table of Cash Flows by Quarter 
+```dax
+VAR __LatestIRR = IF(
+    __LatestIRRDate <= __EndPeriod
+    && __LocalToday >= __StartPeriod, 
+        CALCULATE(
+            [IRR (Projected, Day)], 
+            dim_date[date_id] <= __LatestIRRDate
+        )
+    )
+```
 
-__IRRTable: 
+Create a table that shows cash flows for each investment, within the reporting period.
 
-Create a table that shows cash flows for each investment, only within the reporting period. 
+For the last period, it includes both value and projected cash flows to reflect expected future value.
 
-For the last period, it includes both MOIC (Multiple on Invested Capital) and projected cash flows to reflect expected future value. 
- 
+```dax
+VAR __IRRTable =  
+ADDCOLUMNS (
+    CALCULATETABLE (
+        SUMMARIZE (
+            FILTER (
+                'dim_date',
+                dim_date[date_id] >= __FirstIRRDate 
+                    && dim_date[date_id] <= __EndPeriod
+            ),
+            dim_date[last_day_quarter] 
+             
+        ),
+        REMOVEFILTERS ( dim_date[last_day_quarter]  )
+      
+    ),
+    "IRRCashflow", CALCULATE(
+        IF(
+            MAX(dim_date[last_day_quarter]) = __EndPeriod, 
+            [Value RT] + [IRR Cashflow], 
+            [IRR Cashflow]
+        ),
+        fact_journal[investmentid] IN __SelectedInvestments
+        )
+)
+```
 
-5. Return Either the Projected IRR or the Latest Known IRR
+Return Either the Projected IRR or the Latest Known IRR
 
 Depending on the situation:
 
-If the report includes future periods and there are valid transactions:
+- If the report includes future periods and there are valid transactions:
+- Calculate a projected IRR using quarterly cash flows (XIRR).
+- If not: Just return the last known IRR from historical data.
 
-Calculate a projected IRR using quarterly cash flows (XIRR).
-If not: Just return the last known IRR from historical data.
+```dax
+RETURN IF(
+    ISBLANK(__EndPeriod) = FALSE() 
+        && ISBLANK(__FirstIRRDate) = FALSE() 
+        && __LatestIRRDate > __EndPeriod, 
+    XIRR(__IRRTable, [IRRCashflow], dim_date[last_day_quarter], 0.1, 0),
+    __LatestIRR
+)
+```
+
+The following is the equivalent measure where IRR is calculated using the daily records from the journal tables. The journal records are filters to only those that are
+
+1. Within the selected date range
+2. Flagged as IRR related cashflows
+3. Related to the investments being reported on
+
+
+```dax
+IRR (Projected, Day) = 
+VAR __FirstPeriod = [First Period With IRR Journal]
+VAR __SelectedQuarter =  [Selected Quarter End]
+VAR __CurrPeriod = IF(
+    ISBLANK(__SelectedQuarter), 
+    [Max Date], 
+    [Last Period With IRR Journal]
+    )
+VAR __CurrTransaction = [IRR Cashflow]
+
+VAR __SelectedInvestments = CALCULATETABLE(
+    VALUES(dim_investment[investmentid]), 
+    dim_investment[actualexitdate_filled] > __SelectedQuarter
+    )
+
+VAR __CountInvestments = COUNTROWS(__SelectedInvestments)
+
+VAR __Value = IF(ISBLANK(__CurrTransaction) = FALSE(), [Value RT])
+
+VAR __IRRJournalDates = 
+SUMMARIZECOLUMNS(
+    fact_journal[journaldatenzt], 
+    FILTER(
+        ALL(fact_journal), 
+        fact_journal[journaldatenzt] >= __FirstPeriod 
+            && fact_journal[journaldatenzt] <= __CurrPeriod  
+            && fact_journal[is_irr] = TRUE()  
+            && fact_journal[investmentid] IN __SelectedInvestments
+    )
+)
+
+VAR __IRRTable = 
+ADDCOLUMNS (
+    CALCULATETABLE (
+        SUMMARIZE (
+            FILTER (
+                'dim_date',
+                dim_date[date_id] IN __IRRJournalDates
+            ),
+             dim_date[date_id] 
+        ),
+        REMOVEFILTERS ( 'dim_date'[date_id] )
+    ),
+    "IRRCashflow", IF(ISBLANK(__CurrTransaction) = FALSE(), 
+        CALCULATE(
+            IF(
+                MAX(dim_date[date_id]) = __CurrPeriod
+                , __Value + [IRR Cashflow]
+                , [IRR Cashflow]
+            ),
+            fact_journal[investmentid] IN __SelectedInvestments
+        )
+    )
+)
+
+RETURN IF(
+            __CurrPeriod > __FirstPeriod 
+            && ISBLANK(__CurrTransaction) = FALSE() 
+            && __CountInvestments > 0, 
+            XIRR(__IRRTable, [IRRCashflow], dim_date[date_id], 0.1, 0), 
+            BLANK()
+        )
+```

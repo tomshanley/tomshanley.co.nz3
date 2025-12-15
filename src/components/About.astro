@@ -47,7 +47,7 @@ const clients = [
     "Infratec / New Power",
     "Meat Industry Association",
     "New Zealand Major Events",
-    "PCML (UK)"
+    "PCML (UK)",
 ];
 ---
 
@@ -66,53 +66,52 @@ const clients = [
 
         <div class="text-lg md:text-2xl text-secondary space-y-4">
             <p>
-                I am a data visualisation designer and business analyst, and
-                will bring the best of both worlds to your project.
+                I am an information designer and business analyst, and will
+                bring the best of both worlds to your project.
             </p>
+
             <p>I live and work in Christchurch, New Zealand.</p>
 
             <p>
                 Originally from the UK, I am a business analyst with a
                 particular passion for presenting data and complex information.
-                I have over 10 years experience working in IT and government,
-                and enjoy the challenge of analysing and presenting the complex
-                environments in which we work.
             </p>
-
-         
+            <p>
+                I have over 20 years experience working across the private and
+                public sector, from small start ups to multinational
+                organisations. And I very much enjoy the challenge of analysing
+                and presenting the complex environments in which we work.
+            </p>
         </div>
     </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-1 items-center md:p-0 gap-8">
-            <h3 class="heading text-2xl uppercase my-8 text-secondary">
-                My Skills
-            </h3>
-            <div class="flex flex-wrap gap-4 mt-0">
-                {
-                    skills.map((skill) => (
+    <div class="grid grid-cols-1 md:grid-cols-1 items-center md:p-0 gap-8">
+        <h3 class="heading text-2xl uppercase my-8 text-secondary">
+            My Skills
+        </h3>
+        <div class="flex flex-wrap gap-4 mt-0">
+            {
+                skills.map((skill) => (
+                    <span class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary">
+                        {skill}
+                    </span>
+                ))
+            }
+        </div>
+
+        <h3 class="heading text-2xl uppercase my-8 text-secondary">
+            Previous Clients
+        </h3>
+        <div class="flex flex-wrap gap-4 mt-0">
+            {
+                clients
+                    .sort()
+                    .map((client) => (
                         <span class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary">
-                            {skill}
+                            {client}
                         </span>
                     ))
-                }
-            </div>
-
-          
-                <h3 class="heading text-2xl uppercase my-8 text-secondary">
-                    Previous Clients
-                </h3>
-                <div class="flex flex-wrap gap-4 mt-0">
-                    {
-                        clients
-                            .sort()
-                            .map((client) => (
-                                <span class="inline-flex items-center justify-center rounded-4xl py-4 px-8 outline-1 outline-dashed outline-secondary">
-                                    {client}
-                                </span>
-                            ))
-                    }
-                </div>
-            </div>
-        
+            }
+        </div>
     </div>
 </section>
