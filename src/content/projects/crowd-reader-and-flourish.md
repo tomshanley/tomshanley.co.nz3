@@ -1,12 +1,11 @@
 ---
 title: "Crowd Reader and Flourish"
 description: "Visualising fan engagement over various sporting events and seasons."
-liveUrl: https://example.com
-githubUrl: https://github.com
 image: {
-url: "/cr-flourish.png",
-alt:  "ZenTrack thumbnail"
+    url: "/cr-flourish.png",
+    alt: "cr thumbnail"
 }
+draft: false
 ---
 
 ## Overview

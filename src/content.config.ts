@@ -30,6 +30,7 @@ const projects = defineCollection({
       url: z.string(),
       alt: z.string(),
     }),
+    draft: z.boolean().optional(),
   }),
 });
 

@@ -1,12 +1,11 @@
 ---
 title: "Superu"
 description: "Print ready visualisations for Superu's Families and Whānau Status Report."
-liveUrl: https://example.com
-githubUrl: https://github.com
 image: {
-url: "/superu-thumb.jpg",
-alt:  "FormSync thumbnail"
+    url: "/superu-thumb.jpg",
+    alt: "superu thumbnail"
 }
+draft: false
 ---
 
 ## Overview

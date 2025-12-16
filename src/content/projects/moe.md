@@ -4,9 +4,10 @@ description: "Printed posters and handouts that visualised their research on par
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/pci-kahui-ako-cropped.png",
-alt:  "FormSync thumbnail"
+    url: "/pci-kahui-ako-cropped.png",
+    alt:  "pci thumbnail"
 }
+draft: false
 ---
 
 ## Overview

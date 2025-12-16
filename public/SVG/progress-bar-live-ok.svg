@@ -1,0 +1,9 @@
+<svg 
+xmlns:dc='http://purl.org/dc/elements/1.1/'
+   xmlns:cc='http://creativecommons.org/ns#'
+   xmlns:svg='http://www.w3.org/2000/svg'
+   xmlns='http://www.w3.org/2000/svg'>
+  <rect width='100' height='30' y='1' style='fill:#DDD;' />
+  <rect x='0' width='97.6239288231743' height='16' y='8' style='fill: #4EBD88;' />
+  <path d='M99.6239288231743,8 v16 l8,-8 z' style='fill: #4EBD88 ; opacity: 0;' />
+</svg>

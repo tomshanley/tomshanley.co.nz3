@@ -1,12 +1,11 @@
 ---
 title: "Spirals"
 description: "Spiral heatmaps for displaying periodic, continuous datasets."
-liveUrl: https://example.com
-githubUrl: https://github.com
 image: {
-url: "/spiral-heatmap.jpg",
-alt:  "Spiral Heatmap"
+  url: "/spiral-heatmap.jpg",
+  alt:  "Spiral Heatmap"
 }
+draft: false
 ---
 
 ## Overview

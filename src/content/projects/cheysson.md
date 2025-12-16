@@ -4,9 +4,10 @@ description: "A habit and task tracker designed with progressive enhancement in 
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/cheysson-demo.jpg",
-alt:  "ZenTrack thumbnail"
+  url: "/cheysson-demo.jpg",
+  alt:  "cheysson thumbnail"
 }
+draft: false
 ---
 
 ## Overview

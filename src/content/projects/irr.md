@@ -4,9 +4,10 @@ description: "Provide an IRR value for a single date"
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/irr.png",
-alt:  "FormSync thumbnail"
+    url: "/irr.png",
+    alt:  "irr thumbnail"
 }
+draft: true
 ---
 
 ## Overview

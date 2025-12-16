@@ -34,4 +34,8 @@ export const SOCIALS = [
     NAME: "Github",
     HREF: "https://github.com/tomshanley",
   },
+  {
+    NAME: "Observable",
+    HREF: "https://observablehq.com/@tomshanley/"
+  }
 ];

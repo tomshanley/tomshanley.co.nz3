@@ -4,9 +4,10 @@ description: Purpose built website for providing population forecasts for the Gr
 liveUrl: https://example.com
 githubUrl: https://github.com
 image: {
-url: "/sense-gwrc-5.png",
-alt:  "Promptsmith thumbnail"
+    url: "/sense-gwrc-5.png",
+    alt:  "sense thumbnail"
 }
+draft: false
 ---
 
 ## Overview

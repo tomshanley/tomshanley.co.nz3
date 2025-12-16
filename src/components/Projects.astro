@@ -3,25 +3,32 @@ import Card from "./Card.astro";
 
 import { getCollection, type CollectionEntry } from "astro:content";
 
-const allProjects: CollectionEntry<"projects">[] = (
-  await getCollection("projects")
-).slice(0, 3);
+const allProjects = (await getCollection("projects"))
+  .filter((post) => !post.data.draft)
+  .slice(0, 3);
 ---
 
 <section id="Projects" class="container mx-auto px-6">
   <div class="overflow-hidden mb-12">
-    <div class="flex ">
+    <div class="flex">
       <div class="flex shrink-0 whitespace-nowrap">
-
-            <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 ">
-              work
-            </h2>
-     
+        <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8">
+          work
+        </h2>
       </div>
-      
     </div>
+    <div><p class="text-2xl text-secondary">Recent examples of my work</p></div>
   </div>
   {allProjects.map((project) => <Card entry={project} />)}
+
+<div class="flex flex-col md:flex-row gap-2.5">
+      <a
+        class="w-full sm:w-auto flex items-center justify-center bg-primary rounded-2xl py-3 px-6 sm:py-4 sm:px-10 cursor-pointer hover:bg-background hover:outline hover:outline-1 hover:outline-dashed hover:outline-secondary hover:text-foreground transition"
+        href="/projects">View more</a
+      >
+      
+    </div>
+ <div class="flex flex-col md:flex-row gap-2.5">
+      <p>&nbsp</p>
+    </div>   
 </section>
-
-
