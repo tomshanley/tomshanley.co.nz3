@@ -1,16 +1,13 @@
 ---
-
 import { SOCIALS } from "@consts";
-
 ---
 
+<section id="Contact" class="container mx-auto px-6 pt-18">
+  <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
+    Contact
+  </h2>
 
-  <section id="Contact" class="container mx-auto px-6 pt-18">
-    <h2 class="heading text-5xl md:text-9xl uppercase mr-4 md:mr-8 my-8">
-      Contact
-    </h2>
-
-    <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
+  <div class="grid grid-cols-1 md:grid-cols-2 items-center gap-8">
     <div class="space-y-6">
       <p class="text-xl lg:text-3xl max-w-xl">
         Got an idea? A problem? Send me a message, or connect online.
@@ -40,33 +37,37 @@ import { SOCIALS } from "@consts";
             type="text"
             id="name"
             name="name"
-            class="peer border border-secondary border-dashed p-4 text-xl w-full focus:outline-none rounded-3xl placeholder-transparent"
-            placeholder="Name"
-            required
+            class="peer border border-secondary border-dashed p-4 rounded-3xl text-xl w-full placeholder-transparent w-full
+             px-2.5 pt-4 border-1
+            appearance-none focus:outline-none focus:ring-0 focus:border-brand"
+            placeholder=" "
           />
           <label
             for="name"
-            class="absolute left-4 top-4 text-xl text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xl peer-focus:-top-2 peer-focus:text-sm peer-focus:px-2 peer-focus:text-secondary transition-all peer-focus:bg-background"
+            class="absolute left-4 top-1 text-xl text-body text-gray-500 duration-300 transform -translate-y-4 scale-75 z-10 origin-[0] bg-background px-2
+            peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
+            peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:px-2"
+            >Name</label
           >
-            Name
-          </label>
         </div>
 
         <div class="relative">
           <input
-            type="email"
+            type="text"
             id="email"
             name="email"
-            class="peer border border-secondary border-dashed p-4 text-xl w-full focus:outline-none rounded-3xl placeholder-transparent"
-            placeholder="Email"
-            required
+            class="peer border border-secondary border-dashed p-4 rounded-3xl text-xl w-full placeholder-transparent w-full
+             px-2.5 pt-4 border-1
+            appearance-none focus:outline-none focus:ring-0 focus:border-brand"
+            placeholder=" "
           />
           <label
             for="email"
-            class="absolute left-4 top-4 text-xl text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xl peer-focus:-top-2 peer-focus:px-2 peer-focus:text-sm peer-focus:text-secondary transition-all peer-focus:bg-background"
+            class="absolute left-4 top-1 text-xl text-body text-gray-500 duration-300 transform -translate-y-4 scale-75 z-10 origin-[0] bg-background px-2
+            peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
+            peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:px-2"
+            >Email</label
           >
-            Email
-          </label>
         </div>
       </div>
 
@@ -75,12 +76,17 @@ import { SOCIALS } from "@consts";
           id="message"
           name="message"
           rows="6"
-          class="peer border border-secondary border-dashed p-4 text-xl w-full focus:outline-none rounded-3xl placeholder-transparent resize-none"
-          placeholder="Message"
-          required></textarea>
+          class="peer border border-secondary border-dashed p-4 rounded-3xl text-xl w-full placeholder-transparent w-full
+             px-2.5 pt-4 border-1
+            appearance-none focus:outline-none focus:ring-0 focus:border-brand resize-none"
+          required
+        >
+        </textarea>
         <label
           for="message"
-          class="absolute left-4 top-4 text-xl text-gray-500 peer-placeholder-shown:top-4 peer-placeholder-shown:text-xl peer-focus:-top-2 peer-focus:text-sm peer-focus:text-secondary transition-all peer-focus:px-2 peer-focus:bg-background"
+          class="absolute left-4 top-1 text-xl text-body text-gray-500 duration-300 transform -translate-y-4 scale-75 z-10 origin-[0] bg-background px-2
+            peer-focus:text-fg-brand peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2
+            peer-focus:top-1 peer-focus:scale-75 peer-focus:-translate-y-4 peer-focus:px-2"
         >
           Message
         </label>
@@ -95,4 +101,4 @@ import { SOCIALS } from "@consts";
     </form>
   </div>
   <div><p>&nbsp;</p></div>
-  </section>
+</section>
